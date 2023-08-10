@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: app-dev
+    image: app-dev
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+      target: stag
+    volumes:
+      - ./src:/app/src
+    environment:
+      PORT: 8090
+      DB_URL: mongodb+srv://qosbot:qosbot@microsrv.j8ond.mongodb.net/qos-cib-auth-service?retryWrites=true&w=majority
+      DB_PASSWORD: 
+      SECRET: ECF63B+oaWON3YbYzBi9gXn+4d+q64NZTSwk8Vf1
+      SMTP_HOST: smtp.gmail.com
+      SMTP_PORT: 587
+      SMTP_USERNAME: israeladeyeyee@gmail.com
+      SMTP_PASSWORD: hislove22
+    ports:
+      - "8090:8090"  # Map container port 8090 to host port 8090
